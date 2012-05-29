@@ -155,9 +155,9 @@ public class AnalemmaPainter extends SunDialPainter {
 				Shape s = PaintUtil.createMark(p,8);
 				Shape textS = PaintUtil.getShapeFromText(HOURFORMAT.format(d), p.x, p.y, PaintUtil.VERYSMALLFONT, true);
 				Rectangle2D textBounds = textS.getBounds2D();
-				double dx = textBounds.getWidth();
-				double dy = textBounds.getHeight();
-				textS = new Path2D.Double(textS, AffineTransform.getTranslateInstance(-dx, -dy) );
+				double dx = textBounds.getWidth()/2;
+				double dy = textBounds.getHeight()/2;
+				textS = new Path2D.Double(textS, AffineTransform.getTranslateInstance(-dx, 0) );
 				Area hourTick = new Area(s);
 				hourTick.exclusiveOr( new Area(textS) );
 				
