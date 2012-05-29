@@ -36,6 +36,7 @@ public class AnalemmaPainter extends SunDialPainter {
 	private static final DateFormat TIMEFORMAT = new SimpleDateFormat("HH:mm");
 	private static final DateFormat DATETIMEFORMAT = new SimpleDateFormat("dd/MMM HH:mm");
 	private static final DateFormat MONTHFORMAT = new SimpleDateFormat("MMMM");
+	private static final DateFormat HOURFORMAT = new SimpleDateFormat("HH");
 	private static final boolean HOMENAJE = true;
 
 	
@@ -152,7 +153,15 @@ public class AnalemmaPainter extends SunDialPainter {
 				}
 				
 				Shape s = PaintUtil.createMark(p,8);
-				ret.add(s);
+				Shape textS = PaintUtil.getShapeFromText(HOURFORMAT.format(d), p.x, p.y, PaintUtil.VERYSMALLFONT, true);
+				Rectangle2D textBounds = textS.getBounds2D();
+				double dx = textBounds.getWidth();
+				double dy = textBounds.getHeight();
+				textS = new Path2D.Double(textS, AffineTransform.getTranslateInstance(-dx, -dy) );
+				Area hourTick = new Area(s);
+				hourTick.exclusiveOr( new Area(textS) );
+				
+				ret.add(hourTick);
 			}
 		}
 		
@@ -242,6 +251,7 @@ public class AnalemmaPainter extends SunDialPainter {
 		TIMEFORMAT.setTimeZone(timeZone);
 		MONTHFORMAT.setTimeZone(timeZone);
 		DATETIMEFORMAT.setTimeZone(timeZone);
+		HOURFORMAT.setTimeZone(timeZone);
 	}
 
 

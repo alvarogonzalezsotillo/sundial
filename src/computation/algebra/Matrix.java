@@ -264,8 +264,7 @@ public class Matrix {
 		return ret;
 	}
 	
-	public Matrix extract( int rowIni, int columnIni, int rowEnd, int columnEnd ){
-		if( rowIni < 0 || columnIni < 0 ){
+	public Matrix extract( int rowIni, int columnIni, int rowEnd, int columnEnd ){ if( rowIni < 0 || columnIni < 0 ){
 			throw new IllegalArgumentException();
 		}
 		if( rowEnd >= rows() || columnEnd >= columns() ){
