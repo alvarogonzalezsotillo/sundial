@@ -55,7 +55,7 @@ public class SunDialData {
 			300,
 			new Rectangle(0,0,450,900));
 	
-	public static final SunDialData DEFAULT = ESTE;
+	public static final SunDialData DEFAULT = SUR;
 	
 	public SunDialData(LatLon latLon, AzimutAltitude wallNormal, TimeZone timeZone, Point2d gnomonBase, double gnomonHeight, Rectangle dialBounds) {
 		super();
