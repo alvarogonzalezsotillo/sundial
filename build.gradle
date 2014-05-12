@@ -1,0 +1,22 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies{
+    compile group : 'org.apache.xmlgraphics', name: 'batik-svg-dom', version: '1.7'
+    compile group : 'org.apache.xmlgraphics', name: 'batik-svggen', version: '1.7'
+    compile group : 'org.apache.xmlgraphics', name: 'fop', version: '1.0'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.6'
+}
+
+
+mainClassName = 'gui.MainFrame'
+
+
+
